@@ -1,8 +1,8 @@
 import { serverEnv } from 'configs/envConfig';
+import cors from 'cors';
 import express from 'express';
 import apiRoutes from 'routes';
 import { loggingInfo } from 'utils/logging';
-import cors from 'cors';
 
 const app = express();
 
@@ -22,5 +22,5 @@ app
 
 	// Set server port
 	.listen(serverEnv.port, () => {
-		loggingInfo(`Server start on port ${serverEnv.port} 🤟`);
+		loggingInfo(`Server is running on port ${serverEnv.port} 🤟`);
 	});

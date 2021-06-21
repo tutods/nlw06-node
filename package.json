@@ -7,7 +7,6 @@
 		"url": "https://github.com/TutoDS"
 	},
 	"scripts": {
-		"postinstall": "husky install",
 		"dev": "nodemon -r tsconfig-paths/register --config nodemon.json src/server.ts",
 		"format": "prettier -w .",
 		"lint": "eslint . --ext .ts --ext .js"
