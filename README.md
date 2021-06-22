@@ -1,7 +1,7 @@
 <div align="center">
 <h1 style="font-weight: 300; margin-top: 5px">NLW#06 <strong>NodeJS</strong></h1>
 </div>
-<div align="center">This project is created from the <strong>Le Wagon</strong> React introduction Workshop.</div>
+<div align="center">This project is created from the <strong>NLW#06</strong> of <strong>NodeJS</strong></div>
 
 <br />
 <div align="center">
