@@ -1,10 +1,5 @@
+import { UserType } from '../types/User';
 import { BaseUserService } from './BaseUserService';
-
-type UserType = {
-	name: string;
-	email: string;
-	admin?: boolean;
-};
 
 type ResponseType = {
 	code: number;
@@ -17,7 +12,7 @@ class CreateUserService extends BaseUserService {
 		const userExists = await this.repository.findOne({ email });
 
 		if (userExists) {
-			throw new Error(`User already exists!`);
+			throw new Error('User already exists!');
 		}
 
 		const user = this.repository.create({ name, email, admin });
