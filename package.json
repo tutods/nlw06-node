@@ -9,17 +9,23 @@
 	"scripts": {
 		"postinstall": "husky install",
 		"dev": "nodemon -r tsconfig-paths/register --config nodemon.json src/server.ts",
+		"typeorm": "ts-node node_modules/typeorm/cli.js",
 		"format": "prettier -w .",
 		"lint": "eslint . --ext .ts --ext .js"
 	},
 	"dependencies": {
 		"cors": "^2.8.5",
-		"express": "^4.17.1"
+		"express": "^4.17.1",
+		"reflect-metadata": "^0.1.13",
+		"sqlite3": "^5.0.2",
+		"typeorm": "^0.2.34",
+		"uuid": "^8.3.2"
 	},
 	"devDependencies": {
 		"@types/cors": "^2.8.10",
 		"@types/express": "^4.17.12",
 		"@types/node": "^15.12.4",
+		"@types/uuid": "^8.3.0",
 		"@typescript-eslint/eslint-plugin": "^4.27.0",
 		"@typescript-eslint/parser": "^4.27.0",
 		"dotenv": "^10.0.0",

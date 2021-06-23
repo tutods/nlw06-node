@@ -22,6 +22,14 @@
 <br />
 <br />
 
+<h2 style="font-weight:300">💬 Changes:</h2>
+
+-   I use **Nodemon** with **TS-Node** instead **TS-Node-Dev**;
+-   Add **ESLint** configuration (`.eslintrc`) and add hook to run on `git push`;
+
+<br />
+<br />
+
 <h2 style="font-weight:300">How to fix <strong>Husky</strong> to run hooks:</h2>
 
 In `package.json` add on scripts:

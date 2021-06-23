@@ -1,8 +1,11 @@
 import { serverEnv } from 'configs/envConfig';
 import cors from 'cors';
-import express from 'express';
-import apiRoutes from 'routes';
-import { loggingInfo } from 'utils/logging';
+import 'database';
+import express, { Request, Response } from 'express';
+import 'reflect-metadata';
+import { apiRoutes } from 'routes';
+import { errorHandler } from 'shared/middlewares/ErrorHandler';
+import { loggingInfo } from 'shared/utils/logging';
 
 const app = express();
 
@@ -20,7 +23,20 @@ app
 	// API Routes
 	.use('/api', apiRoutes)
 
+	// 404 - Not Found route
+	.use((req: Request, res: Response) => {
+		const url = req.url;
+
+		return res.status(404).json({
+			code: 404,
+			message: `The ${url} not found!`
+		});
+	}) // ==> 404 Not Found Route
+
+	// Middleware to Error Handler
+	.use(errorHandler)
+
 	// Set server port
 	.listen(serverEnv.port, () => {
-		loggingInfo(`Server is running on port ${serverEnv.port} 🤟`);
+		loggingInfo(`🤟 Server is running on port ${serverEnv.port}`);
 	});

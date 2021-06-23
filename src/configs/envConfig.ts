@@ -1,5 +1,5 @@
 import 'dotenv/config';
-import { ServerEnvType } from 'types/EnvConfig';
+import { ServerEnvType } from 'shared/types/EnvConfig';
 
 const { PORT } = process.env;
 

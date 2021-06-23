@@ -1,11 +1,17 @@
 import { Request, Response, Router } from 'express';
+import { userRoutes } from 'modules/users/routes';
 
 const apiRoutes = Router();
 
-apiRoutes.get('/', (req: Request, res: Response) => {
-	res.status(200).json({
-		status: 'Ok!'
-	});
-});
+apiRoutes
+	// User Routes
+	.use('/users', userRoutes)
 
-export default apiRoutes;
+	// API Status
+	.get('/', (req: Request, res: Response) => {
+		res.status(200).json({
+			status: 'Ok!'
+		});
+	});
+
+export { apiRoutes };
