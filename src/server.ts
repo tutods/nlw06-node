@@ -2,6 +2,7 @@ import { serverEnv } from 'configs/envConfig';
 import cors from 'cors';
 import 'database';
 import express, { Request, Response } from 'express';
+import 'express-async-errors';
 import 'reflect-metadata';
 import { apiRoutes } from 'routes';
 import { errorHandler } from 'shared/middlewares/ErrorHandler';
@@ -17,7 +18,6 @@ app
 	.use(cors())
 
 	//
-	.use(express.urlencoded({ extended: true }))
 	.use(express.json())
 
 	// API Routes

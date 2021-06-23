@@ -1,3 +1,4 @@
+import { AppError } from 'shared/errors/AppError';
 import { UserType } from '../types/User';
 import { BaseUserService } from './BaseUserService';
 
@@ -12,12 +13,16 @@ class CreateUserService extends BaseUserService {
 		const userExists = await this.repository.findOne({ email });
 
 		if (userExists) {
-			throw new Error('User already exists!');
+			throw new AppError('User already exists!');
 		}
 
 		const user = this.repository.create({ name, email, admin });
 
-		await this.repository.save(user);
+		try {
+			await this.repository.save(user);
+		} catch (err) {
+			throw new AppError(err.message, 400);
+		}
 
 		return {
 			code: 201,

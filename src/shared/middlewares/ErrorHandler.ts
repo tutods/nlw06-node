@@ -10,8 +10,6 @@ const errorHandler = (
 ) => {
 	// Error is instance of App Error
 	if (error instanceof AppError) {
-		console.log('Entrou AQUI');
-
 		return response.status(error.code).json({
 			status: error.code,
 			message: error.message
