@@ -42,8 +42,7 @@
 	},
 	"husky": {
 		"hooks": {
-			"pre-commit": "echo \"———› START Prettier ‹———\" && lint-staged && git add . && echo \"———› Prettier ✅ ‹——— \"",
-			"pre-push": "echo \"———› START ESLint ‹———\" && --ext .ts --ext .js && echo \"———› ESLint ✅ ‹———\""
+			"pre-commit": "lint-staged && eslint . --ext .ts --ext .js && git add ."
 		}
 	},
 	"lint-staged": {
