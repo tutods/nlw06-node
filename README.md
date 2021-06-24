@@ -22,6 +22,17 @@
 <br />
 <br />
 
+<h2 style="font-weight:300">📋 How to execute:</h2>
+
+To run this project follow commands below:
+
+1. `yarn install`;
+2. `yarn typeorm migration:run`;
+3. `yarn dev`: this run the development server;
+
+<br />
+<br />
+
 <h2 style="font-weight:300">💬 Changes:</h2>
 
 -   I use **Nodemon** with **TS-Node** instead **TS-Node-Dev**;
