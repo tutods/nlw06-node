@@ -20,8 +20,7 @@ export const isAuthenticated = (
 	try {
 		const decodeToken = verify(token, authEnv.secret) as TokenPlayloadType;
 
-		const { exp, sub, name, email, isAdmin, created_at, update_at } =
-			decodeToken;
+		const { exp, sub, user } = decodeToken;
 
 		if (Date.now() >= exp * 1000) {
 			throw new AppError('Your token already expire!');
@@ -29,11 +28,11 @@ export const isAuthenticated = (
 
 		req.user = {
 			id: sub,
-			name,
-			email,
-			isAdmin,
-			created_at,
-			update_at
+			name: user.name,
+			email: user.email,
+			isAdmin: user.isAdmin || false,
+			created_at: user.created_at,
+			update_at: user.update_at
 		};
 
 		next();
