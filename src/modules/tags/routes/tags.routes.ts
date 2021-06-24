@@ -11,6 +11,7 @@ const tagRoutes = Router();
 
 tagRoutes
 	.use(isAuthenticated)
+	.get('/', controller.index)
 	.post(
 		'/',
 		[joiBodyValidation(genericTagBody), havePermissions],

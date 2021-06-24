@@ -8,7 +8,7 @@ export const havePermissions = (
 ): void => {
 	const { isAdmin } = req.user;
 
-	if (!isAdmin) {
+	if (!isAdmin || !req.user) {
 		throw new AppError(
 			'You not have necessary permissions to execute this action.',
 			403
