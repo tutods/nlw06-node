@@ -1,3 +1,5 @@
+import { hash } from 'bcryptjs';
+import { authEnv } from 'configs/envConfig';
 import { AppError } from 'shared/errors/AppError';
 import { UserType } from '../types/User';
 import { BaseUserService } from './BaseUserService';
@@ -9,14 +11,26 @@ type ResponseType = {
 };
 
 class CreateUserService extends BaseUserService {
-	async execute({ name, email, admin }: UserType): Promise<ResponseType> {
+	async execute({
+		name,
+		email,
+		password,
+		isAdmin
+	}: UserType): Promise<ResponseType> {
 		const userExists = await this.repository.findOne({ email });
 
 		if (userExists) {
 			throw new AppError('User already exists!');
 		}
 
-		const user = this.repository.create({ name, email, admin });
+		const hashedPassword = await hash(password, authEnv.salt);
+
+		const user = this.repository.create({
+			name,
+			email,
+			password: hashedPassword,
+			isAdmin
+		});
 
 		try {
 			await this.repository.save(user);
@@ -26,7 +40,7 @@ class CreateUserService extends BaseUserService {
 
 		return {
 			code: 201,
-			message: 'User created with sucess!',
+			message: 'User created with success!',
 			user
 		};
 	}

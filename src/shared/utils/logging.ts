@@ -25,10 +25,13 @@ const loggingDebug = (message: string): void => {
 const getTimeStamp = (): string => {
 	const date = new Date();
 
-	const day = ('0' + date.getDate()).slice(-2);
-	const month = ('0' + (date.getMonth() + 1)).slice(-2);
+	const day = String(date.getDate()).padStart(2, '0');
+	const month = String(date.getMonth() + 1).padStart(2, '0');
+	const hour = String(date.getHours()).padStart(2, '0');
+	const minutes = String(date.getMinutes()).padStart(2, '0');
+	const seconds = String(date.getSeconds()).padStart(2, '0');
 
-	const dateString = `${day}/${month}/${date.getFullYear()} ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`;
+	const dateString = `${day}/${month}/${date.getFullYear()} ${hour}:${minutes}:${seconds}`;
 
 	return dateString;
 };

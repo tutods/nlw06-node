@@ -1,4 +1,3 @@
-import { Exclude } from 'class-transformer';
 import {
 	Column,
 	CreateDateColumn,
@@ -8,23 +7,13 @@ import {
 } from 'typeorm';
 import { v4 as uuid } from 'uuid';
 
-@Entity('users')
-class User {
+@Entity('tags')
+class Tag {
 	@PrimaryColumn({ default: uuid() })
 	readonly id: string;
 
 	@Column()
 	name: string;
-
-	@Column({ unique: true })
-	email: string;
-
-	@Column()
-	@Exclude()
-	password: string;
-
-	@Column({ nullable: true, default: false })
-	isAdmin: boolean;
 
 	@CreateDateColumn()
 	created_at: Date;
@@ -39,4 +28,4 @@ class User {
 	}
 }
 
-export { User };
+export { Tag };

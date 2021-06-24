@@ -5,7 +5,7 @@ import express, { Request, Response } from 'express';
 import 'express-async-errors';
 import 'reflect-metadata';
 import { apiRoutes } from 'routes';
-import { errorHandler } from 'shared/middlewares/ErrorHandler';
+import { errorHandler } from 'shared/middlewares/errorHandler';
 import { loggingInfo } from 'shared/utils/logging';
 
 const app = express();

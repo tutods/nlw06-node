@@ -26,6 +26,8 @@
 
 -   I use **Nodemon** with **TS-Node** instead **TS-Node-Dev**;
 -   Add **ESLint** configuration (`.eslintrc`) and add hook to run on `git push`;
+-   Custom folder structure;
+-   Use one controller for all **CRUD** services (`getAll`, `getOne`, `create`, `update` and `delete`);
 
 <br />
 <br />

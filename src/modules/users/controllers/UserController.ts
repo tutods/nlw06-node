@@ -1,18 +1,20 @@
+import { classToClass } from 'class-transformer';
 import { Request, Response } from 'express';
 import { CreateUserService } from 'modules/users/services/CreateUserService';
 
 class UserController {
 	public async create(req: Request, res: Response): Promise<Response> {
 		const createUser = new CreateUserService();
-		const { name, email, admin } = req.body;
+		const { name, email, isAdmin, password } = req.body;
 
 		const result = await createUser.execute({
 			name,
 			email,
-			admin
+			password,
+			isAdmin
 		});
 
-		return res.status(result.code).json(result);
+		return res.status(result.code).json(classToClass(result));
 	}
 }
 
