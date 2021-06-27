@@ -27,4 +27,33 @@ const genericUserBody = Joi.object({
 	})
 });
 
-export { genericUserBody };
+const updateUserBody = Joi.object({
+	name: Joi.string().messages({
+		'string.base': `Name ${EValidationMessages.STRING}`
+	}),
+	email: Joi.string()
+		.email()
+		.messages({
+			'string.base': `Email ${EValidationMessages.STRING}`,
+			'string.email': EValidationMessages.EMAIL
+		}),
+	password: Joi.string().messages({
+		'string.base': `Password ${EValidationMessages.STRING}`
+	}),
+	isAdmin: Joi.boolean().messages({
+		'boolean.base': `Field 'isAdmin' ${EValidationMessages.BOOLEAN}`
+	})
+});
+
+const userIdParam = Joi.object({
+	id: Joi.string()
+		.guid()
+		.required()
+		.messages({
+			'string.base': `Id ${EValidationMessages.STRING}`,
+			'string.guid': `Id ${EValidationMessages.UUID}`,
+			'any.required': `Id ${EValidationMessages.REQUIRED}`
+		})
+});
+
+export { genericUserBody, updateUserBody, userIdParam };
