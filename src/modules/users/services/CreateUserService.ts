@@ -15,7 +15,7 @@ class CreateUserService extends BaseUserService {
 		name,
 		email,
 		password,
-		isAdmin
+		isAdmin = false
 	}: UserType): Promise<ResponseType> {
 		const userExists = await this.repository.findOne({ email });
 

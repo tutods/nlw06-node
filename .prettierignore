@@ -3,4 +3,4 @@ package.json
 build/
 dist/
 *.sass
-*.json
+package.json

@@ -39,6 +39,10 @@ To run this project follow commands below:
 -   Add **ESLint** configuration (`.eslintrc`) and add hook to run on `git push`;
 -   Custom folder structure;
 -   Use one controller for all **CRUD** services (`getAll`, `getOne`, `create`, `update` and `delete`);
+-   Use **JOI** to validate parameters and body of requests;
+    -   I create 3 middlewares to validade the body, query parameters or url parameters;
+-   Set **Babel** to build;
+-   Use `classToClass` to hide password on result of requests;
 
 <br />
 <br />

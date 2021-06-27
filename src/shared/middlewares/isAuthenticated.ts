@@ -11,11 +11,11 @@ export const isAuthenticated = (
 ): void => {
 	const authHeader = req.headers.authorization;
 
-	if (!authHeader) {
-		throw new AppError('Cannot find any token in your headers', 401);
-	}
-
 	const [, token] = authHeader.split(' '); // get only token (ex.: Bearer <token>)
+
+	if (!token || !authHeader) {
+		throw new AppError('Your token is invalid.', 401);
+	}
 
 	try {
 		const decodeToken = verify(token, authEnv.secret) as TokenPlayloadType;
@@ -23,7 +23,7 @@ export const isAuthenticated = (
 		const { exp, sub, user } = decodeToken;
 
 		if (Date.now() >= exp * 1000) {
-			throw new AppError('Your token already expire!');
+			throw new AppError('Your token already expire!', 401);
 		}
 
 		req.user = {

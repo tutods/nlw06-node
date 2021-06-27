@@ -1,6 +1,6 @@
 {
 	"compilerOptions": {
-		"target": "es2017",
+		"target": "esnext",
 		"module": "commonjs",
 		"lib": ["es2017", "ES5"],
 		"allowJs": true,
@@ -17,5 +17,6 @@
 		"resolveJsonModule": true,
 		"skipLibCheck": true,
 		"forceConsistentCasingInFileNames": true
-	}
+	},
+	"include": ["./src"]
 }
