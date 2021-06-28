@@ -42,7 +42,7 @@ To run this project follow commands below:
 -   Use **JOI** to validate parameters and body of requests;
     -   I create 3 middlewares to validade the body, query parameters or url parameters;
 -   Set **Babel** to build;
--   Use `classToClass` to hide password on result of requests;
+-   Use `classToClass` (form `class-transformer` package) to hide password on result of requests;
 
 <br />
 <br />
