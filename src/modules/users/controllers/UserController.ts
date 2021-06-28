@@ -1,9 +1,18 @@
 import { classToClass } from 'class-transformer';
 import { Request, Response } from 'express';
 import { CreateUserService } from 'modules/users/services/CreateUserService';
+import { ListUserService } from '../services/ListUserService';
 import { UpdateUserService } from '../services/UpdateUserService';
 
 class UserController {
+	public async getAll(req: Request, res: Response): Promise<Response> {
+		const listUser = new ListUserService();
+
+		const result = await listUser.execute();
+
+		return res.status(result.code).json(classToClass(result));
+	}
+
 	public async create(req: Request, res: Response): Promise<Response> {
 		const createUser = new CreateUserService();
 		const { name, email, isAdmin, password } = req.body;

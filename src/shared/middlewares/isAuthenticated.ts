@@ -11,9 +11,13 @@ export const isAuthenticated = (
 ): void => {
 	const authHeader = req.headers.authorization;
 
+	if (!authHeader) {
+		throw new AppError('Your token is invalid.', 401);
+	}
+
 	const [, token] = authHeader.split(' '); // get only token (ex.: Bearer <token>)
 
-	if (!token || !authHeader) {
+	if (!token) {
 		throw new AppError('Your token is invalid.', 401);
 	}
 

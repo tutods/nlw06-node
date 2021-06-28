@@ -1,9 +1,16 @@
 import { Router } from 'express';
-import { havePermissions } from 'shared/middlewares/havePermissions';
 import { isAuthenticated } from 'shared/middlewares/isAuthenticated';
-import { joiBodyValidation } from 'shared/middlewares/joiValidation';
+import {
+	joiBodyValidation,
+	joiParamsValidation
+} from 'shared/middlewares/joiValidation';
 import { ComplimentController } from '../controllers/ComplimentController';
 import { genericComplimentBody } from '../validations/ComplimentSchema';
+import {
+	complimentIdParam,
+	complimentUserReceiverIdParam,
+	complimentUserSenderIdParam
+} from '../validations/IdSchema';
 
 const controller = new ComplimentController();
 
@@ -14,7 +21,24 @@ complimentRoutes
 	.use(isAuthenticated)
 
 	// List Compliments
-	.get('/', havePermissions, controller.getAll)
+	.get('/', controller.getAll)
+
+	// Show Compliment
+	.get('/:id', joiParamsValidation(complimentIdParam), controller.getOne)
+
+	// Show Compliments from specific receiver
+	.get(
+		'/receiver/:receiver_id',
+		joiParamsValidation(complimentUserReceiverIdParam),
+		controller.getFromReceiver
+	)
+
+	// Show Compliments from specific sender
+	.get(
+		'/sender/:receiver_id',
+		joiParamsValidation(complimentUserSenderIdParam),
+		controller.getFromSender
+	)
 
 	// Create Compliment
 	.post('/', joiBodyValidation(genericComplimentBody), controller.create);
